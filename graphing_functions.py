@@ -123,4 +123,4 @@ def grid_layout(data):
             height += 1
         else: break
 
-    return width, height, data_amount % height
+    return width, height
