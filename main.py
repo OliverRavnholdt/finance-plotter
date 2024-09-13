@@ -71,6 +71,7 @@ for i in range(h):
     # Will run if the stock list is bigger than 3.
     else:
         for j in range(w):
+            print(i, j, k)
             curr_data = data[k]     # Define data to currently be plotted
 
             cm = gf.color_fade_calculator(curr_data, n)  # Get array to apply to colormap
@@ -89,6 +90,12 @@ for i in range(h):
             axs[i, j].title.set_text(stock_names[k])
 
             k += 1      # Increment k for indexing
+            # Sometimes the grid of subplots is bigger than the data list - This fixes that issue
+            if k == len(data):
+                break   # If all data is plotted break the inner loop
+        else:
+            continue    # If the inner loop wasn't broken then continue
+    break   # This will only trigger if the inner loop was broken
 
 gf.delete_old_csv()     # Delete all files from stock folder (Comment to keep files)
 
