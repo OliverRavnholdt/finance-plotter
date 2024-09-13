@@ -132,16 +132,25 @@ def segment_calculator(data, n=5):
 # Function to calculate a dynamical grid layout depending on the amount of data
 # Function will try to make a ratio where the width is never bigger than the height + 2
 def grid_layout(data):
-    data_amount = len(data)     # Get the amount that needs to be plotted
-    height = 1      # Minimum starting height
-    while True:
-        max_width = height - 1      # Width to height ratio
-        width = math.floor(data_amount/height)  # Try width for this height
-        if data_amount % height != 0:
-            width += 1  # Add one to width if all graphs aren't plotted
-        if width > max_width:
-            height += 1     # Add one to height if all graphs aren't plotted
-        else:
-            break   # Break the loop if all conditions are satisfied
+    data_amount = len(data)     # Get amount of data inputted
+
+    # Hard fix for data amount of 3
+    if data_amount == 3:
+        return 1, 3
+
+    # Loop until best grid ratio is found
+    for i in range(data_amount-1, 0, -1):
+        # Try to find the most optimal grid layout
+        if data_amount % i == 0 and i != 1:
+            width = int(data_amount / i)
+            height = int(data_amount / width)
+
+            max_height = width + 3  # Define a max height to width ratio to not always get 2 x h grids
+            if max_height >= height:
+                return width, height
+
+    # If an optimal grid wasn't found using the loop method: Return a grid where the width is one smaller than height
+    height = math.ceil(math.sqrt(data_amount))
+    width = math.floor(math.sqrt(data_amount))
 
     return width, height

@@ -4,8 +4,8 @@ from matplotlib.collections import LineCollection
 import math
 from graphing_functions import grid_layout
 
-tester = [[0] for i in range(10)]
-w, h, remove = grid_layout(tester)
+tester = [[0] for i in range(2)]
+w, h = grid_layout(tester)
 print(w, h)
 print(len(tester))
 
