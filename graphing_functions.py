@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import math
 import glob
+import os
 
 
 def all_csv_tolist(directory="stock_data", data_wanted="Close"):
@@ -20,6 +21,10 @@ def all_csv_tolist(directory="stock_data", data_wanted="Close"):
 
     return data
 
+def delete_old_csv(directory="stock_data"):
+    csv_files = glob.glob(directory + "/*.csv")
+    for f in csv_files:
+        os.remove(f)
 
 def axis_definer(graph_data):
     xlim = [0, len(graph_data)]

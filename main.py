@@ -56,7 +56,6 @@ for i in range(h):
         axs[i].title.set_text(stock_names[i])
     else:
         for j in range(w):
-            print(i, j, k)
             curr_data = data[k]
 
             cm = gf.color_fade_calculator(curr_data, n)
@@ -71,4 +70,7 @@ for i in range(h):
             axs[i, j].set_ylim(y_lim)
             axs[i, j].title.set_text(stock_names[k])
             k += 1
+
+gf.delete_old_csv()     # Delete all files from stock folder
+
 plt.show()
