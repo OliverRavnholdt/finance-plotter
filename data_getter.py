@@ -1,6 +1,6 @@
-import yfinance as yf   # Used to pull stock data from Yahoo Finance
+import yfinance as yf           # Used to pull stock data from Yahoo Finance
 from datetime import datetime   # Used to specify date for stock pulling
-import time     # Used to track time usage of functions
+import time                     # Used to track time usage of functions
 
 
 # Function to pull data from Yahoo Finance

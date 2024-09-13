@@ -1,8 +1,8 @@
-import matplotlib.pyplot as plt     # Used to plot data on graphs
-import matplotlib.colors as clr     # Used to specify custom colormap
+import matplotlib.pyplot as plt                         # Used to plot data on graphs
+import matplotlib.colors as clr                         # Used to specify custom colormap
 from matplotlib.collections import LineCollection       # Used to plot multiple lines in a plot with gradients
-from data_getter import data_getter     # Function to pull stock data using yfinance
-import graphing_functions as gf     # Various helper functions for data handling
+from data_getter import data_getter                     # Function to pull stock data using yfinance
+import graphing_functions as gf                         # Various helper functions for data handling
 
 # Assign colormap
 cmap = clr.LinearSegmentedColormap.from_list('my_gradient', (
