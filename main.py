@@ -49,6 +49,7 @@ plt.subplots_adjust(left=0.05,
 # This nested loop will plot the data
 k = 0   # Used for indexing
 for i in range(h):
+    break_maybe = False
     # Fix to plot data if stock list is 3 or less as "axs" is no longer nested
     if len(data) <= 3:
         curr_data = data[i]     # Define data to currently be plotted
@@ -71,7 +72,6 @@ for i in range(h):
     # Will run if the stock list is bigger than 3.
     else:
         for j in range(w):
-            print(i, j, k)
             curr_data = data[k]     # Define data to currently be plotted
 
             cm = gf.color_fade_calculator(curr_data, n)  # Get array to apply to colormap
@@ -92,10 +92,10 @@ for i in range(h):
             k += 1      # Increment k for indexing
             # Sometimes the grid of subplots is bigger than the data list - This fixes that issue
             if k == len(data):
+                break_maybe = True
                 break   # If all data is plotted break the inner loop
-        else:
-            continue    # If the inner loop wasn't broken then continue
-    break   # This will only trigger if the inner loop was broken
+    if break_maybe:     # This is an odd way of breaking the nested loop, but it works
+        break   # This will only trigger if the inner loop was broken
 
 gf.delete_old_csv()     # Delete all files from stock folder (Comment to keep files)
 
